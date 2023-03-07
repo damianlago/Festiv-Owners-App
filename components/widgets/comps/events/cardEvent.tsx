@@ -11,26 +11,27 @@ import {
 import { CalendarIcon, EditIcon } from '@chakra-ui/icons'
 
 
-const image = 'https://discotecasgratis.com/img/uploads/Property/32/PropertyPicture/large/1568026093_stardust.jpg';
 
-export default function ProductSimple() {
+export default function cardEvent({ data }: any) {
+
+    var image = data.image;
     return (
         <Box
             role={'group'}
             p={6}
-            maxW={'300px'}
-            // maxW={'330px'}
+            maxW={'16rem'}
             w={'full'}
             bg={useColorModeValue('white', 'gray.800')}
             boxShadow={'2xl'}
             rounded={'lg'}
             pos={'relative'}
-            zIndex={1}>
+            zIndex={1}
+            >
             <Box
                 rounded={'lg'}
                 mt={-12}
                 pos={'relative'}
-                height={'230px'}
+                height={'10rem'}
                 _after={{
                     transition: 'all .3s ease',
                     content: '""',
@@ -45,35 +46,42 @@ export default function ProductSimple() {
                 }}
                 _groupHover={{
                     _after: {
-                        filter: 'blur(20px)',
+                        filter: 'blur(28px)',
                     },
                 }}>
                 <Image
                     rounded={'lg'}
-                    height={230}
-                    width={282}
+                    height={'12rem'}
+                    width={'14rem'}
                     objectFit={'cover'}
                     src={image}
                 />
             </Box>
-            <Stack pt={8} align={'center'}>
-                <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                   <CalendarIcon/> 04-03-2023 -  Sala Cool
-                </Text>
-                <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    Stardust: Nole + Matrixman
-                </Heading>
-                <Stack direction={'row'} align={'center'}>
-                    <Text fontWeight={800} fontSize={'xl'} mr={5}>
-                       <EditIcon /> Edit
+            <Stack pt={8}>
+                <Box display="flex" mt={2} justifyContent={'space-between'}>
+                    <Text color={'gray.500'} fontSize={'0.73rem'} textTransform={'uppercase'}>
+                        <CalendarIcon /> {data.date}
                     </Text>
-                    <Text fontWeight={800} fontSize={'xl'}>
-                        Publish
+                    <Text color={'gray.500'} fontSize={'0.71rem'} textTransform={'uppercase'}>
+                        <CalendarIcon /> {data.adress}
                     </Text>
-                    {/* <Text textDecoration={'line-through'} color={'gray.600'}>
-                            $199
+                </Box>
+                <Box display="flex" justifyContent={'center'}>
+                    <Heading fontSize={'md'} fontFamily={'body'} fontWeight={500}>
+                        {data.eventName.length <= 25 ? data.eventName : data.eventName.slice(0, 25) + "..."}
+                    </Heading>
+                </Box>
+                {/* <Stack direction={'row'} align={'center'}> */}
+                {/* <Text fontWeight={800} fontSize={'xl'} mr={5}>
+                           <EditIcon /> Edit
+                        </Text>
+                        <Text fontWeight={800} fontSize={'xl'}>
+                            Publish
                         </Text> */}
-                </Stack>
+                {/* <Text textDecoration={'line-through'} color={'gray.600'}>
+                                $199
+                            </Text> */}
+                {/* </Stack> */}
             </Stack>
         </Box>
     );
