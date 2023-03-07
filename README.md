@@ -1,6 +1,6 @@
 ## Getting Started
 
-First, install all dependencies. Run this command on the project root directory
+First, install all dependencies. Run this command on the project root directory:
 ```bash
 npm i
 ```
@@ -21,7 +21,7 @@ For finally, open [http://localhost:3000] with your browser to see the result.
 
 ## ROUTES
 
-Index (app.festiv...) -> Lading page announcing Festiv services
+Index (app.festiv.io) -> Lading page announcing Festiv services
 
     ```
          ---- IF login button pushed ----
