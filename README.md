@@ -1,6 +1,6 @@
 ## Getting Started
 
-First, install all dependencies. Run this command on the project root directory:
+First, install all dependencies. Run this command on the project root directory
 ```bash
 npm i
 ```
