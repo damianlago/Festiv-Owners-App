@@ -19,28 +19,6 @@ pnpm dev
 For finally, open [http://localhost:3000] with your browser to see the result.
 
 
-## ROUTES
-
-Index (app.festiv.io) -> Lading page announcing Festiv services
-
-    ```
-         ---- IF login button pushed ----
-            Login Component THEN...
-
-            -> User is NOT register RENDER 
-                Register Component
-
-            -> User is registered and logged RENDER 
-                Dashboard Component 
-    ```
-
-SETTINGS (app.festiv.io/settings)
-    - Index: User Settings Page
-
-EVENT (app.festiv.io/{eventId}
-    - Index: Event Information Page
-
-
 ## DEPENDENCIES
 
 - Nextjs Auth0 (Auth0 SDK)
@@ -48,9 +26,11 @@ EVENT (app.festiv.io/{eventId}
 - React Hook Form (Forms maker library)
 - SWR (Data fetching library)
 - ChackraUI (UX/UI library)
+- react-day-picker 
+- date-fns
+
 
 ## ENV VARIABLES
-
 NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyB77HCIBA47J1NLmtOlCJUsJcVqqZ9PYTg
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=festiv-62aea.firebaseapp.com
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=festiv-62aea
@@ -64,3 +44,13 @@ AUTH0_BASE_URL='http://localhost:3000'
 AUTH0_ISSUER_BASE_URL='https://dev-5aa5ueqrokcwkkc3.us.auth0.com'
 AUTH0_CLIENT_ID='jL5swH4x7EWE5caHFIrO0Vbk2yEvlYMJ'
 AUTH0_CLIENT_SECRET='M5dIFlOUEsjR5-75bcPiQlT_84r9sSBLSkoZ1PSV9Jrn5QwgdTxqjCIar6lhWcTn'
+
+
+## AUTH0 Config
+Allowed Callback URLs:
+https://festiv-app-two.vercel.app/api/auth/callback
+http://localhost:3000/api/auth/callback
+
+Allowed Logout URLS:
+https://festiv-app-two.vercel.app
+http://localhost:3000

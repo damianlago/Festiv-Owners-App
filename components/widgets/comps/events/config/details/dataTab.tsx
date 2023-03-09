@@ -18,16 +18,31 @@ import {
     Alert,
     AlertIcon,
     CloseButton,
+    Center,
 } from '@chakra-ui/react';
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
 import { middleware } from 'lib/db/middleware';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import React from 'react';
+import { format } from 'date-fns';
 
 
 export default function data({ data }: any) {
 
     const router = useRouter();
+
+    const initialDays: Date[] = [];
+    const [days, setDays] = React.useState<Date[] | undefined>(initialDays);
+
+    const footer =
+        days && days.length > 0 ? (
+            <p>You selected {days.length} day(s).</p>
+        ) : (
+            <p>Please pick one or more days.</p>
+        );
 
     const defaultValues = {
         displayName: "",
@@ -83,8 +98,58 @@ export default function data({ data }: any) {
                     </FormControl>
 
                     {/* Date */}
-                    <FormControl mt={5}>
-                        <Tabs variant='soft-rounded' colorScheme='gray'>
+                    <FormControl mt={1}>
+                        <Center>
+                        <Controller
+                            name="date"
+                            control={control}
+                            rules={{ required: true }}
+                            render={({ field }) =>
+                            <DayPicker
+                                mode="multiple"
+                                min={1}
+                                selected={days}
+                                onSelect={setDays}
+                                footer={footer}
+                                {...field}
+                            /> } 
+                        />
+                        </Center>
+                        <HStack mt={4}>
+                            <Box width={'full'}>
+                                Start Time
+                                <Controller
+                                    name="startTime"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) =>
+                                        <Input
+                                            placeholder="Select start time"
+                                            variant={'filled'}
+                                            _placeholder={{ color: 'gray.500' }}
+                                            type="time"
+                                            {...field}
+                                        />}
+                                />
+                            </Box>
+                            <Box width={'full'}>
+                                End Time
+                                <Controller
+                                    name="endTime"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) =>
+                                        <Input
+                                            placeholder="Select end time"
+                                            variant={'filled'}
+                                            _placeholder={{ color: 'gray.500' }}
+                                            type="time"
+                                            {...field}
+                                        />}
+                                />
+                            </Box>
+                        </HStack>
+                        {/* <Tabs variant='soft-rounded' colorScheme='gray'>
                             <TabList>
                                 <Tab _selected={{ color: 'black', bg: 'blackAlpha.100' }} >
                                     <Heading size={'sm'} fontWeight={500}> One Date </Heading >
@@ -108,7 +173,7 @@ export default function data({ data }: any) {
                                                 _placeholder={{ color: 'gray.500' }}
                                                 type="date"
                                                 {...field}
-                                                // value={'2023-03-31'}
+                                            // value={'2023-03-31'}
                                             />}
                                     />
 
@@ -197,7 +262,7 @@ export default function data({ data }: any) {
                             </TabPanels>
 
                             <Divider mt={2} />
-                        </Tabs>
+                        </Tabs> */}
                     </FormControl>
 
                     {/* Adress */}
