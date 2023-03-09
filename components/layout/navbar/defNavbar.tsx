@@ -66,7 +66,7 @@ export default function DefNavbar() {
           
           <Flex alignItems={'center'}>
             <ButtonGroup gap='2' >
-              <Button color='#fff' backgroundColor='#956ce3' _hover={ { color:'#fff', backgroundColor:'#7C38FE' } }><a href="/api/auth/login">Login</a></Button>
+              <Button color='#fff' backgroundColor='rgb(59 130 246)' _hover={ { color:'#fff', backgroundColor:'#3E6DCB' } }><a href="/api/auth/login">Login</a></Button>
             </ButtonGroup>
           </Flex>
         </Flex>

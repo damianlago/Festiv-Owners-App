@@ -1,16 +1,16 @@
 import React from "react";
-import AddEvent from "../comps/events/addEvent";
-import CardEvent from "../comps/events/cardEvent";
+import AddEvent from "../comps/events/add";
+import CardEvent from "../comps/events/card";
 import { Heading, Box, Badge, Stack, Flex, Grid } from '@chakra-ui/react'
 
-import { Event } from "../../../lib/class/eventClass";
+import { Event } from "../../../lib/class/events/eventClass";
 
 
-export default function Dashboard({ data }: any) {
+export default function Dashboard({ data, user }: any) {
 
   if (data != null) {
     var eventsLengh = data?.model?.length;
-    var eventsList = eventsLengh >= 4 ? data?.model?.slice(0, 4) : eventsLengh >= 1 ? data?.model : 0;
+    var eventsList = data?.model;//eventsLengh >= 4 ? data?.model?.slice(0, 4) : eventsLengh >= 1 ? data?.model : 0;
   }
 
   return (
@@ -22,7 +22,7 @@ export default function Dashboard({ data }: any) {
           Events
         </Heading>
         <Box ml={3} mt={3}>
-          <AddEvent />
+          <AddEvent user={user}/>
         </Box>
       </Flex>
 

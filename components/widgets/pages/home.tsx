@@ -5,10 +5,10 @@ export default function HomePage() {
 
   return (
     <>
-      <div className={styles.section1}>Events software manangment</div>
-      <div className={styles.section2}>Why Festiv?</div>
-      <div className={styles.section3}>Features</div>
-      <div className={styles.section4}>Usefull links</div>
+      <div className={styles.section1}></div>
+      <div className={styles.section2}></div>
+      <div className={styles.section3}></div>
+      <div className={styles.section4}></div>
     </>
   );
 };

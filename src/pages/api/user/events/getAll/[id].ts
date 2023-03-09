@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 //Firebase
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../../../../../lib/firebase/firebaseConfig";
-import { Event } from "../../../../../../lib/class/eventClass";
+import { Event } from "../../../../../../lib/class/events/eventClass";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {

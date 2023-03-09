@@ -23,9 +23,9 @@ import {
   MenuList,
 } from '@chakra-ui/react';
 import {
-    SettingsIcon,
-    LockIcon,
-    MoonIcon
+  SettingsIcon,
+  LockIcon,
+  MoonIcon
 } from '@chakra-ui/icons';
 import {
   FiHome,
@@ -34,11 +34,11 @@ import {
   FiSettings,
   FiMenu,
   FiBell,
-  FiMoreVertical,
+  FiChevronDown,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
-import NewEvent from "../../widgets/comps/events/addEvent"
+import NewEvent from "../../widgets/comps/events/add"
 
 interface LinkItemProps {
   name: string;
@@ -47,37 +47,37 @@ interface LinkItemProps {
 
 const LinkItems: Array<LinkItemProps> = [
   { name: 'Home', icon: FiHome },
-  { name: 'Calendar', icon: FiCalendar},
+  { name: 'Calendar', icon: FiCalendar },
   { name: 'Settings', icon: FiSettings },
 ];
 
-export default function AuthNavbar({ children, user } : any) {
+export default function AuthNavbar({ children, user }: any) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-    <Box minH="100vh" bg={useColorModeValue('#fff', 'gray.900')}>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full">
-        <DrawerContent>
-          <SidebarContent onClose={onClose}/>
-        </DrawerContent>
-      </Drawer>
-      {/* mobile-nav */}
-      <MobileNav onOpen={onOpen} user={user}/>
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
+      <Box minH="100vh" bg={useColorModeValue('#fff', 'gray.900')}>
+        <SidebarContent
+          onClose={() => onClose}
+          display={{ base: 'none', md: 'block' }}
+        />
+        <Drawer
+          autoFocus={false}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="full">
+          <DrawerContent>
+            <SidebarContent onClose={onClose} />
+          </DrawerContent>
+        </Drawer>
+        {/* mobile-nav */}
+        <MobileNav onOpen={onOpen} user={user} />
+        <Box ml={{ base: 0, md: 60 }} p="4">
+          {children}
+        </Box>
       </Box>
-    </Box>
     </>
   );
 }
@@ -128,7 +128,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: 'cyan.400',
+          bg: 'rgb(59 130 246)',
           color: 'white',
         }}
         {...rest}>
@@ -165,7 +165,7 @@ const MobileNav = ({ onOpen, user, ...rest }: MobileProps) => {
       borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
       justifyContent={{ base: 'space-between', md: 'flex-end' }}
       {...rest}>
-      
+
       <IconButton
         display={{ base: 'flex', md: 'none' }}
         onClick={onOpen}
@@ -210,16 +210,16 @@ const MobileNav = ({ onOpen, user, ...rest }: MobileProps) => {
                   </Text>
                 </VStack>
                 <Box display={{ base: 'none', md: 'flex' }}>
-                  <FiMoreVertical />
+                  <FiChevronDown />
                 </Box>
               </HStack>
             </MenuButton>
             <MenuList
               bg={useColorModeValue('white', 'gray.900')}
               borderColor={useColorModeValue('gray.200', 'gray.700')}>
-              <MenuItem icon={<MoonIcon/>} as='a' href='/#'>Dark Mode</MenuItem>
+              <MenuItem icon={<MoonIcon />} as='a' href='/#'>Dark Mode</MenuItem>
               <MenuDivider />
-              <MenuItem icon={<LockIcon/>} as='a' href='/api/auth/logout'>Sign out</MenuItem>
+              <MenuItem icon={<LockIcon />} as='a' href='/api/auth/logout' color={'red.600'}>Sign out</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

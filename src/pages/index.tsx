@@ -35,7 +35,7 @@ export default function Home() {
     const { data } = useSWR(`/api/user/events/getAll/id=${user?.sub}`, fetcher)
     return (
       <>
-        <Dashboard data={data} />
+        <Dashboard data={data} user={user} />
       </>
     )
   }
