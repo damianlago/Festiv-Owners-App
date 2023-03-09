@@ -14,7 +14,7 @@ import { CalendarIcon, EditIcon } from '@chakra-ui/icons'
 
 export default function cardEvent({ data }: any) {
 
-    var image = data.image;
+    var image = "https://www.awakenings.com/img/images/blogs/AwakeningsFestival2019_zaterdag_TIMBUITING_1456.jpg?w=1200&h=630&fit=crop-50-50";//data.image;
     return (
         <Box
             role={'group'}
@@ -60,10 +60,10 @@ export default function cardEvent({ data }: any) {
             <Stack pt={8}>
                 <Box display="flex" mt={2} justifyContent={'space-between'}>
                     <Text color={'gray.500'} fontSize={'0.73rem'} textTransform={'uppercase'}>
-                        <CalendarIcon /> {data.date}
+                        <CalendarIcon /> 01-01-2023
                     </Text>
                     <Text color={'gray.500'} fontSize={'0.71rem'} textTransform={'uppercase'}>
-                        <CalendarIcon /> {data.adress}
+                        <CalendarIcon /> Sala Cool
                     </Text>
                 </Box>
                 <Box display="flex" justifyContent={'center'}>

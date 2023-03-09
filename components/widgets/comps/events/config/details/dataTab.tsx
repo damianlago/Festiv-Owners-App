@@ -108,7 +108,7 @@ export default function data({ data }: any) {
                                                 _placeholder={{ color: 'gray.500' }}
                                                 type="date"
                                                 {...field}
-                                                value={'2023-03-31'}
+                                                // value={'2023-03-31'}
                                             />}
                                     />
 

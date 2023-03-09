@@ -22,10 +22,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     doc.data().userId,
                     doc.data().eventName,
                     doc.data().date,
-                    doc.data().startTime,
-                    doc.data().endTime,
-                    doc.data().adress,
-                    doc.data().image
                 )
             )
         });
