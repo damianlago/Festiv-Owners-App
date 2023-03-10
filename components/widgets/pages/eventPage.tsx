@@ -1,10 +1,12 @@
 import  EventConfig from '../comps/events/config'
 
-export default function eventPage({ data }: any) {
+export default function eventPage({ event }: any) {
+
+    
 
     return (
         <>
-            <EventConfig data={data} />
+            <EventConfig event={event} />
         </>
     )
 }

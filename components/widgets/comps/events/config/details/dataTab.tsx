@@ -30,7 +30,7 @@ import React from 'react';
 import { format } from 'date-fns';
 
 
-export default function data({ data }: any) {
+export default function data({ event }: any) {
 
     const router = useRouter();
 
@@ -61,6 +61,7 @@ export default function data({ data }: any) {
     const { handleSubmit, register, control, reset, setValue } = useForm({ defaultValues });
 
     const onSubmit = async (data: any) => {
+        data.date = days?.toString(); //FORMAT DATE FOR CORRECT SAVE IN BD
         const apiRoute = `/api/user/events/create/data/id=${router?.query?.id}`;
         middleware(data, apiRoute)
             .then((data) => {
@@ -74,7 +75,7 @@ export default function data({ data }: any) {
             });
     };
 
-    if (data) {
+    if (event) {
         return (
             <>
                 <form onSubmit={handleSubmit((data) => onSubmit(data))}>
@@ -87,7 +88,7 @@ export default function data({ data }: any) {
                             rules={{ required: true }}
                             render={({ field }) =>
                                 <Input
-                                    placeholder={data.model.eventName}
+                                    placeholder={event.model.eventName}
                                     variant={'filled'}
                                     _placeholder={{ color: 'gray.900' }}
                                     type="text"
@@ -100,7 +101,15 @@ export default function data({ data }: any) {
                     {/* Date */}
                     <FormControl mt={1}>
                         <Center>
-                        <Controller
+                            <DayPicker
+                                mode="multiple"
+                                min={1}
+                                selected={days}
+                                onSelect={setDays}
+                                footer={footer}
+                            />
+
+                            {/* <Controller
                             name="date"
                             control={control}
                             rules={{ required: true }}
@@ -113,7 +122,7 @@ export default function data({ data }: any) {
                                 footer={footer}
                                 {...field}
                             /> } 
-                        />
+                        /> */}
                         </Center>
                         <HStack mt={4}>
                             <Box width={'full'}>

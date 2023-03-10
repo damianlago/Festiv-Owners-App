@@ -26,6 +26,7 @@ For finally, open [http://localhost:3000] with your browser to see the result.
 - React Hook Form (Forms maker library)
 - SWR (Data fetching library)
 - ChackraUI (UX/UI library)
+- React Icons
 - react-day-picker 
 - date-fns
 

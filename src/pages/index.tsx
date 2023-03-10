@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import { useUser } from '@auth0/nextjs-auth0/client';
-import useSWR from 'swr'
+import useSWR, { SWRConfig } from 'swr'
 import { fetcher } from 'lib/db/fetcher';
 
 import styles from '@/styles/Home.module.css'
@@ -13,7 +13,20 @@ import Dashboard from "../../components/widgets/pages/dashboard"
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+// export async function getStaticProps ( user: any ) {
+  
+//   const initialData = await fetcher(`http://localhost:3000/api/user/events/getAll/id=google-oauth2|103819905126483971158`);
+  
+//   return { 
+//     props: { 
+//       fallback: {
+//         'http://localhost:3000/api/user/events/getAll/id=google-oauth2|103819905126483971158': initialData
+//       } 
+//       } 
+//   };
+// }
+
+export default function Home(  ) {
 
   const { user, error, isLoading } = useUser();
 
@@ -32,10 +45,12 @@ export default function Home() {
   }
 
   if (user) {
-    const { data } = useSWR(`/api/user/events/getAll/id=${user?.sub}`, fetcher)
+    
+    const { data } = useSWR(`/api/user/events/getAll/id=${user?.sub}`, fetcher);
+
     return (
       <>
-        <Dashboard data={data} user={user} />
+          <Dashboard data={data} user={user} />
       </>
     )
   }

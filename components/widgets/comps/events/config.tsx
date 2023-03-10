@@ -1,7 +1,7 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Button } from '@chakra-ui/react';
 import Details from './config/details';
 
-export default function eventPage({ data }: any) {
+export default function eventPage({ event }: any) {
 
     return (
         <>
@@ -16,7 +16,7 @@ export default function eventPage({ data }: any) {
 
                 <TabPanels>
                     <TabPanel>
-                        <Details data={data}/>
+                        <Details event={event}/>
                     </TabPanel>
                     <TabPanel>
                         <p>two!</p>

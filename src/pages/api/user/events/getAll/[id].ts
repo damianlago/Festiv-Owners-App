@@ -7,7 +7,7 @@ import { Event } from "../../../../../../lib/class/events/eventClass";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-        const route = "test";
+        const route = "events";
         const userId = (req.query.id)?.slice(3);
         const model: any = [];
 

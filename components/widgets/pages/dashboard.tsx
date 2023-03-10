@@ -4,6 +4,7 @@ import CardEvent from "../comps/events/card";
 import { Heading, Box, Badge, Stack, Flex, Grid } from '@chakra-ui/react'
 
 import { Event } from "../../../lib/class/events/eventClass";
+import Link from "next/link";
 
 
 export default function Dashboard({ data, user }: any) {
@@ -34,9 +35,11 @@ export default function Dashboard({ data, user }: any) {
           <p>Crea un Evento</p>
           :
           eventsList?.map((doc: Event) => (
+            <Link href={`events/${encodeURIComponent(doc.id.toString())}`}>
             <Box mt='1.5em' ml={1} key={doc.id}>
               <CardEvent data={doc} />
             </Box>
+            </Link>
             // <Link href={`${encodeURIComponent(doc.userId.toString())}/event/${encodeURIComponent(doc.id.toString())}`}> <p>{doc.eventName}</p></Link>
           ))}
       </Grid>

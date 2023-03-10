@@ -14,7 +14,7 @@ import DetailsTab from "./details/detailsTab"
 import OthersTab from "./details/othersTab"
 
 
-export default function details({ data }: any) {
+export default function details({ event }: any) {
 
     return (
         <>
@@ -47,7 +47,7 @@ export default function details({ data }: any) {
 
                         <TabPanels>
                             <TabPanel>
-                                <DataTab data={data}/>
+                                <DataTab event={event}/>
                             </TabPanel>
 
                             <TabPanel>
