@@ -1,8 +1,7 @@
-import AuthNavbar from './navbar/authNavbar';
-import DefNavbar from './navbar/defNavbar';
-
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { Skeleton } from '@chakra-ui/react'
+import AuthNavbar from './authNavbar';
+import DefNavbar from './defNavbar';
 
 
 export default function Layout( { children }: any ) {
@@ -12,8 +11,8 @@ export default function Layout( { children }: any ) {
   if (isLoading) {
     return( 
       <>
-        <Skeleton mt={5} height='25px' />
-        <Skeleton mt={2} height='20px' />
+        <Skeleton mt={5} height='10px' />
+        <Skeleton mt={2} height='15px' />
       </>
     )
   }

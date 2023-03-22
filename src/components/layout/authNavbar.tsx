@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import {
   IconButton,
   Avatar,
@@ -23,22 +23,19 @@ import {
   MenuList,
 } from '@chakra-ui/react';
 import {
-  SettingsIcon,
   LockIcon,
   MoonIcon
 } from '@chakra-ui/icons';
 import {
   FiHome,
   FiCalendar,
-  FiPlus,
   FiSettings,
   FiMenu,
   FiBell,
   FiChevronDown,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
-import { ReactText } from 'react';
-import NewEvent from "../../widgets/comps/events/add"
+
 
 interface LinkItemProps {
   name: string;
@@ -52,7 +49,9 @@ const LinkItems: Array<LinkItemProps> = [
 ];
 
 export default function AuthNavbar({ children, user }: any) {
+
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <Box minH="100vh" bg={useColorModeValue('#fff', 'gray.900')}>
@@ -60,6 +59,7 @@ export default function AuthNavbar({ children, user }: any) {
           onClose={() => onClose}
           display={{ base: 'none', md: 'block' }}
         />
+
         <Drawer
           autoFocus={false}
           isOpen={isOpen}
@@ -72,7 +72,7 @@ export default function AuthNavbar({ children, user }: any) {
             <SidebarContent onClose={onClose} />
           </DrawerContent>
         </Drawer>
-        {/* mobile-nav */}
+
         <MobileNav onOpen={onOpen} user={user} />
         <Box ml={{ base: 0, md: 60 }} p="4">
           {children}
@@ -87,6 +87,7 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+
   return (
     <Box
       transition="3s ease"
@@ -97,12 +98,14 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       pos="fixed"
       h="full"
       {...rest}>
+
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           Festiv
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
+
       {LinkItems.map((link) => (
         <NavItem key={link.name} icon={link.icon} >
           {link.name}
@@ -114,7 +117,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
 interface NavItemProps extends FlexProps {
   icon: IconType;
-  children: ReactText;
+  children: any;
 }
 
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {

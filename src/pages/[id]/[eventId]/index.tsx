@@ -1,7 +1,17 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Button } from '@chakra-ui/react';
-import Details from './config/details';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
+import useSWR from 'swr';
+import { fetcher } from "../../../lib/db/fetcher";
+import { useRouter } from "next/router";
 
-export default function eventPage({ event }: any) {
+
+export default withPageAuthRequired(function eventPage() {
+
+    const router = useRouter();
+    const id = router?.query?.eventId || "";
+
+    var method = "getOne";
+    const { data } = useSWR(`/api/user/events/event?params=${method}id=${id}`, fetcher);
 
     return (
         <>
@@ -16,7 +26,7 @@ export default function eventPage({ event }: any) {
 
                 <TabPanels>
                     <TabPanel>
-                        <Details event={event}/>
+                        <p>one!</p>
                     </TabPanel>
                     <TabPanel>
                         <p>two!</p>
@@ -31,4 +41,4 @@ export default function eventPage({ event }: any) {
             </Tabs>
         </>
     )
-}
+});
