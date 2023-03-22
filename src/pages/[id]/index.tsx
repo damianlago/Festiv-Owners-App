@@ -37,7 +37,7 @@ export default withPageAuthRequired(function Dashboard() {
             <Grid.Container gap={2}>
                 {
                     eventsList?.map((doc: EventModel) => (
-                        <Grid xs={6} sm={4} md={4} lg={4} xl={3}>
+                        <Grid xs={12} sm={4} md={4} lg={4} xl={3}>
                             {/* <Link href={`events/${encodeURIComponent(doc.id.toString())}`}> */}
                             <Card data={doc} />
                             {/* </Link> */}
