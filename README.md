@@ -1,5 +1,4 @@
 ## Getting Started
-
 First, install all dependencies. Run this command on the project root directory:
 ```bash
 npm i
@@ -20,12 +19,12 @@ For finally, open [http://localhost:3000] with your browser to see the result.
 
 
 ## DEPENDENCIES
-
 - Nextjs Auth0 (Auth0 SDK)
 - Firebase (Firebase SDK)
 - React Hook Form (Forms maker library)
 - SWR (Data fetching library)
 - ChackraUI (UX/UI library)
+- Next-UI
 - React Icons
 - react-day-picker 
 - date-fns

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { EventModel } from "../../lib/model/eventModel";
-import Card from "../../components/widgets/card"
+import Card from "../../components/widgets/cardEvent"
 import { Grid, Button, Badge, Container, Spacer } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import useSWR from 'swr';
@@ -13,7 +13,6 @@ export default withPageAuthRequired(function Dashboard() {
 
     const router = useRouter();
     const user = router?.query?.id || "";
-
 
     var method = "getAll";
     const { data } = useSWR(`/api/user/events/event?params=${method}id=${user}`, fetcher);
@@ -31,6 +30,7 @@ export default withPageAuthRequired(function Dashboard() {
                 </Link>
             </Button>
 
+            {/* Buscador y Filtrar eventos */}
 
             <Spacer x={3} />
 

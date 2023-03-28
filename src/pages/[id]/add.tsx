@@ -45,15 +45,12 @@ export default withPageAuthRequired(function addEvent() {
     return (
         <>
             <Card css={{ mw: "330px" }}>
-                <form onSubmit={handleSubmit((data) => onSubmit(data))}>
+                <form onSubmit={handleSubmit((data) => onSubmit(data))}>  
                     <Card.Header>
                         <Text b>Event Information</Text>
                     </Card.Header>
-
                     <Card.Divider />
-
                     <Card.Body css={{ py: "$10" }}>
-
                         <Controller
                             name="eventName"
                             control={control}
@@ -66,7 +63,6 @@ export default withPageAuthRequired(function addEvent() {
                                 />
                             }
                         />
-
                         <Controller
                             name="dates"
                             control={control}
@@ -79,7 +75,6 @@ export default withPageAuthRequired(function addEvent() {
                                 />
                             }
                         />
-
                         <Controller
                             name="startTime"
                             control={control}
@@ -92,8 +87,6 @@ export default withPageAuthRequired(function addEvent() {
                                 />
                             }
                         />
-
-
                         <Controller
                             name="endTime"
                             control={control}
@@ -106,7 +99,6 @@ export default withPageAuthRequired(function addEvent() {
                                 />
                             }
                         />
-
                         <Controller
                             name="description"
                             control={control}
@@ -119,8 +111,6 @@ export default withPageAuthRequired(function addEvent() {
                                 />
                             }
                         />
-
-
                         <Input
                             label="Flyer"
                             type="file"
@@ -134,9 +124,7 @@ export default withPageAuthRequired(function addEvent() {
                                 },
                             }}
                         />
-
                     </Card.Body>
-
                     <Card.Footer>
                         <Row justify="flex-end">
                             <Button size="sm" light>Cancel</Button>

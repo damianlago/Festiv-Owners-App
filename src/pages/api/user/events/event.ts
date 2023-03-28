@@ -5,6 +5,17 @@ import { db } from "../../../../lib/firebase/fbConfig"
 import { EventModel } from "../../../../lib/model/eventModel"
 
 
+function formatMethod(params: any) {
+    var index = params.toString()?.search("id=");
+    return (params?.toString()?.substring(0, index));
+}
+
+function formatId(params: any) {
+    var index = params.toString()?.search("id=");
+    var temp = index != null ? index + 3 : 0
+    return (params?.toString()?.slice(temp));
+}
+
 export default withApiAuthRequired(async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
 
@@ -152,16 +163,3 @@ export default withApiAuthRequired(async function handler(req: NextApiRequest, r
         res.status(400).end("Error!");
     }
 });
-
-function formatMethod(params: any) {
-
-    var index = params.toString()?.search("id=");
-    return (params?.toString()?.substring(0, index));
-}
-
-function formatId(params: any) {
-
-    var index = params.toString()?.search("id=");
-    var temp = index != null ? index + 3 : 0
-    return (params?.toString()?.slice(temp));
-}
