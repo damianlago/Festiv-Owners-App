@@ -6,7 +6,8 @@ export class EventModel {
         public eventName: string,
         public state: number,
         public description: string,
-        public dates: [],
+        public startDate: string,
+        public endDate: string,
         public startTime: string,
         public endTime: string
     ) {
@@ -15,7 +16,8 @@ export class EventModel {
         this.eventName = eventName;
         this.state = state;
         this.description = description;
-        this.dates = dates;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.startTime = startTime;
         this.endTime = endTime;
     }
@@ -35,8 +37,11 @@ export class EventModel {
     public getDescription(): string {
         return this.description;
     }
-    public getDates(): [] {
-        return this.dates;
+    public getStartDate(): string {
+        return this.startDate;
+    }
+    public getEndDate(): string {
+        return this.endDate;
     }
     public getStartTime(): string {
         return this.startTime;

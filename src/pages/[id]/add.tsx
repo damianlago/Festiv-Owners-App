@@ -1,9 +1,10 @@
-import { Card, Input, Textarea, Text, Button, Row } from "@nextui-org/react";
+import { Card, Input, Textarea, Text, Button, Row, Grid } from "@nextui-org/react";
 import { useForm, Controller } from 'react-hook-form';
 import { middleware } from "../../lib/db/middleware";
 import { useRouter } from 'next/router';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Link from "next/link";
+import { Center } from '@chakra-ui/react'
 
 
 export default withPageAuthRequired(function addEvent() {
@@ -16,9 +17,11 @@ export default withPageAuthRequired(function addEvent() {
         state: 0,
         eventName: "",
         description: "",
-        dates: "",
+        startDate: "",
         startTime: "",
+        endDate: "",
         endTime: "",
+        img: ""
     };
 
     //Add validation
@@ -35,7 +38,7 @@ export default withPageAuthRequired(function addEvent() {
                 if (data != null) {
                     console.log("Event Data Added -> ", data);
                 }
-                router.push(`${user}/${data?.model?.id}`);
+                router.push(`/${user}/${data?.model?.id}`);
             })
             .catch((err) => {
                 console.log(err);
@@ -44,95 +47,113 @@ export default withPageAuthRequired(function addEvent() {
 
     return (
         <>
-            <Card css={{ mw: "330px" }}>
-                <form onSubmit={handleSubmit((data) => onSubmit(data))}>  
-                    <Card.Header>
-                        <Text b>Event Information</Text>
-                    </Card.Header>
-                    <Card.Divider />
-                    <Card.Body css={{ py: "$10" }}>
-                        <Controller
-                            name="eventName"
-                            control={control}
-                            rules={{ required: true }}
-                            render={({ field }) =>
-                                <Input
-                                    label="Name"
-                                    type="text"
-                                    {...field}
-                                />
-                            }
-                        />
-                        <Controller
-                            name="dates"
-                            control={control}
-                            rules={{ required: true }}
-                            render={({ field }) =>
-                                <Input
-                                    label="Date"
-                                    type="date"
-                                    {...field}
-                                />
-                            }
-                        />
-                        <Controller
-                            name="startTime"
-                            control={control}
-                            rules={{ required: true }}
-                            render={({ field }) =>
-                                <Input
-                                    label="StartTime"
-                                    type="time"
-                                    {...field}
-                                />
-                            }
-                        />
-                        <Controller
-                            name="endTime"
-                            control={control}
-                            rules={{ required: true }}
-                            render={({ field }) =>
-                                <Input
-                                    label="EndTime"
-                                    type="time"
-                                    {...field}
-                                />
-                            }
-                        />
-                        <Controller
-                            name="description"
-                            control={control}
-                            rules={{ required: true }}
-                            render={({ field }) =>
-                                <Textarea
-                                    label="Description"
-                                    placeholder="..."
-                                    {...field}
-                                />
-                            }
-                        />
-                        <Input
-                            label="Flyer"
-                            type="file"
-                            css={{
-                                "::file-selector-button": {
-                                    height: 20,
-                                    padding: 0,
-                                    mr: 4,
-                                    background: "none",
-                                    border: "none",
-                                },
-                            }}
-                        />
-                    </Card.Body>
-                    <Card.Footer>
-                        <Row justify="flex-end">
-                            <Button size="sm" light>Cancel</Button>
-                            <Button type="submit" size="sm">Create</Button>
-                        </Row>
-                    </Card.Footer>
-                </form>
-            </Card>
+            <Center py={8}>
+                <Card css={{ mw: "330px" }}>
+                    <form onSubmit={handleSubmit((data: any) => onSubmit(data))}>
+                        <Card.Header>
+                            <Text b>Event Information</Text>
+                        </Card.Header>
+                        <Card.Divider />
+                        <Card.Body css={{ py: "$10" }}>
+                            <Controller
+                                name="eventName"
+                                control={control}
+                                rules={{ required: true }}
+                                render={({ field }) =>
+                                    <Input
+                                        label="Name"
+                                        type="text"
+                                        {...field}
+                                    />
+                                }
+                            />
+
+                            <Grid.Container gap={2} justify="center">
+                                <Grid >
+                                    <Controller
+                                        name="startDate"
+                                        control={control}
+                                        rules={{ required: true }}
+                                        render={({ field }) =>
+                                            <Input
+                                                label="Start Date"
+                                                type="date"
+                                                {...field}
+                                            />
+                                        }
+                                    />
+                                </Grid>
+                                <Grid justify="flex-end">
+                                    <Controller
+                                        name="startTime"
+                                        control={control}
+                                        rules={{ required: true }}
+                                        render={({ field }) =>
+                                            <Input
+                                                label="Start Time"
+                                                type="time"
+                                                {...field}
+                                            />
+                                        }
+                                    />
+                                </Grid>
+                            </Grid.Container>
+
+                            <Grid.Container gap={2} justify="center">
+                                <Grid >
+                                    <Controller
+                                        name="endDate"
+                                        control={control}
+                                        rules={{ required: true }}
+                                        render={({ field }) =>
+                                            <Input
+                                                label="End Date"
+                                                type="date"
+                                                {...field}
+                                            />
+                                        }
+                                    />
+                                </Grid>
+                                <Grid justify="flex-end">
+                                    <Controller
+                                        name="endTime"
+                                        control={control}
+                                        rules={{ required: true }}
+                                        render={({ field }) =>
+                                            <Input
+                                                label="End Time"
+                                                type="time"
+                                                {...field}
+                                            />
+                                        }
+                                    />
+                                </Grid>
+                            </Grid.Container>
+
+                            <Controller
+                                name="description"
+                                control={control}
+                                rules={{ required: true }}
+                                render={({ field }) =>
+                                    <Textarea
+                                        label="Description"
+                                        placeholder="..."
+                                        {...field}
+                                    />
+                                }
+                            />
+
+                            
+                        </Card.Body>
+                        <Card.Footer>
+                            <Row justify="flex-end">
+                                <Link href="/"><Button size="sm" light>Cancel</Button></Link>
+                                <Button type="submit" size="sm">Create</Button>
+                            </Row>
+                        </Card.Footer>
+                    </form>
+                </Card>
+            </Center>
         </>
     );
 });

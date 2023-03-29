@@ -8,7 +8,6 @@ import useSWR from 'swr';
 import { fetcher } from "../../lib/db/fetcher";
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 
-
 export default withPageAuthRequired(function Dashboard() {
 
     const router = useRouter();
@@ -38,8 +37,8 @@ export default withPageAuthRequired(function Dashboard() {
                 {
                     eventsList?.map((doc: EventModel) => (
                         <Grid xs={12} sm={4} md={4} lg={4} xl={3}>
-                            {/* <Link href={`events/${encodeURIComponent(doc.id.toString())}`}> */}
-                            <Card data={doc} />
+                            {/* <Link href={`/${encodeURIComponent(user.toString())}/${encodeURIComponent(doc.id.toString())}`}> */}
+                                <Card data={doc} user={user.toString()} eventId={doc.id.toString()} />
                             {/* </Link> */}
                         </Grid>
                     ))}

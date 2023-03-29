@@ -43,7 +43,8 @@ export default withApiAuthRequired(async function handler(req: NextApiRequest, r
                             docSnap.data().eventName,
                             docSnap.data().state,
                             docSnap.data().description,
-                            docSnap.data().dates,
+                            docSnap.data().startDate,
+                            docSnap.data().endDate,
                             docSnap.data().startTime,
                             docSnap.data().endTime,
                         );
@@ -68,7 +69,8 @@ export default withApiAuthRequired(async function handler(req: NextApiRequest, r
                                 doc.data().eventName,
                                 doc.data().state,
                                 doc.data().description,
-                                doc.data().dates,
+                                doc.data().startDate,
+                                doc.data().endDate,
                                 doc.data().startTime,
                                 doc.data().endTime,
                             )
@@ -91,7 +93,8 @@ export default withApiAuthRequired(async function handler(req: NextApiRequest, r
                             docSnap.data().eventName,
                             docSnap.data().state,
                             docSnap.data().description,
-                            docSnap.data().dates,
+                            docSnap.data().startDate,
+                            docSnap.data().endDate,
                             docSnap.data().startTime,
                             docSnap.data().endTime,
                         );
@@ -115,7 +118,8 @@ export default withApiAuthRequired(async function handler(req: NextApiRequest, r
                             docSnap.data().eventName,
                             docSnap.data().state,
                             docSnap.data().description,
-                            docSnap.data().dates,
+                            docSnap.data().startDate,
+                            docSnap.data().endDate,
                             docSnap.data().startTime,
                             docSnap.data().endTime,
                         );
@@ -145,7 +149,8 @@ export default withApiAuthRequired(async function handler(req: NextApiRequest, r
                             docSnap.data().eventName,
                             docSnap.data().state,
                             docSnap.data().description,
-                            docSnap.data().dates,
+                            docSnap.data().startDate,
+                            docSnap.data().endDate,
                             docSnap.data().startTime,
                             docSnap.data().endTime,
                         );

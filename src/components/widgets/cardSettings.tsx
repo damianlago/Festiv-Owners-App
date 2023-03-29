@@ -1,10 +1,12 @@
 import { Card, Grid, Text } from "@nextui-org/react";
+import Link from "next/link";
 
 
-export default function cardSettings({ src, name, descrip }:any) {
+export default function cardSettings({ src, name, descrip, link }:any) {
 
   return (
     <Card isHoverable isPressable css={{ p: "$6", mH: "80%",mw: "100%" }}>
+      <Link href={link}>
       <Card.Header>
         <img
           alt="logo"
@@ -18,11 +20,12 @@ export default function cardSettings({ src, name, descrip }:any) {
             </Text>
         </Grid.Container> 
       </Card.Header>
-      <Card.Body css={{ py: "$2" }}>
+      <Card.Body css={{ py: "$1" }}>
         <Text>
           {descrip}
         </Text>
       </Card.Body>
+      </Link>
     </Card>
   );
 }
